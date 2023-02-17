@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selo Magico</title>
+    <!-- aqui é o css -->
+    <style>
+      body{
+        background-color: black;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .imagem{
+        width: 200px
+      }
+      .Formulario{
+        align-items: center;
+        text-align: center;
+      }
+       .resultado{
+        align-items: center;
+        text-align: center;
+        
+        
+       } 
+       .texto{
+        font-family: sans-serif;
+        font-size: 28px;
+       }
+       .texto2{
+        font-family: sans-serif;
+       }
+      .d{
+        background-color: #4CAF50; 
+        color: white; 
+        padding: 10px 20px; 
+       border: none; 
+       border-radius: 5px; 
+       text-align: center; 
+       text-decoration: none; 
+       display: inline-block; 
+       font-size: 16px; 
+       margin: 10px; 
+       cursor: pointer;
+       transition: background-color 0.3s ease; 
+      }
+      .butao{
+        padding: 10px;
+        border: none;
+        border-radius: 25px;
+        background-color: #f2f2f2;
+        font-size: 16px;
+        color: #666;
+        width: 300px;
+        transition: width 0.4s ease-in-out;
+      }
+    </style>
+</head>
+<!-- aqui é o html -->
+<body>
+   <div class="Formulario">
+    <p><img class="imagem"  src="logo recode.png" ></p>
+    <p class="texto">O selo magico da Recode vai <br>revelar seu destino!</p>
+    <p class="texto2">clique em fazer pergunta para que <br>seu destino seja revelado</p>
+    <p><input type="text"class="butao"placeholder="digite"></p>
+    <button class="d">enviar</button>
+    
+   </div>
+   <div class="resultado"></div>
+   <footer class="Formulario">
+    <div class="Formulario"  >
+        <h1>Contatos</h1>
+        <p>Desenvolvedor: Paulo Victor</p>
+        <a href="https://www.instagram.com/recodejr/">contato : https://www.instagram.com/recodejr/</a>
+        <p>versão 12.1</p>
+
+    </div>
+</footer>
+   <!-- aqui é o JS -->
+   <script >
+        const form=document.querySelector(".Formulario");
+        const resultado=document.querySelector(".resultado");
+        const enviar=document.querySelector(".d");
+        enviar.addEventListener("click",()=> {
+            // console.log("foi")
+            function sortear(){
+                const nomes = ["Certeza!","Não tenho tanta certeza.","É decididamente assim.","Não conte com isso.","Sem dúvidas!","Pergunte novamente mais tarde.","Sim, definitivamente!","Minha resposta é não.","Você pode contar com isso.","Melhor não te dizer agora.","A meu ver, sim.","Minhas fontes dizem não.","Provavelmente.","Não é possível prever agora.","Perspectiva boa.","As perspectivas não são tão boas.", "Sim.","Concentre-se e pergunte novamente.","Sinais apontam que sim."];
+                const indiceAleatorio = Math.floor(Math.random() * nomes.length);
+                return nomes[indiceAleatorio];
+            }
+            
+            const span =document.createElement("span");
+            span.classList.add("ativo");
+            span.innerHTML= sortear();
+            resultado.insertAdjacentElement('beforeend',span)
+            apagar()
+            
+            function apagar(){
+                setTimeout(() =>{
+                  const span= document.querySelector('.ativo')
+                  if(span.parentNode){
+                    span.parentNode.removeChild(span)
+                  }
+
+
+                },3000)
+            }
+             
+        })
+   </script>
+    
+</body>
+</html>
